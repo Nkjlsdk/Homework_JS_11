@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>HomeWork7</title>
+    <script src="data.js"></script>
+</head>
+
+<body>
+    <header class="center box">
+
+        <div class="logo">
+            <img src="/img/Logo.png" alt="logo">
+            <img src="/img/search.svg" alt="serch">
+        </div>
+        <div class="options">
+            <img src="/img/header_menu.svg" alt="header_menu">
+            <img class="account" src="/img/header_account.svg" alt="account">
+            <img class="add" src="/img/add.png" alt="add">
+            <div>
+                <img class="Count_round" src="/img/Count.png" alt="Count">
+                <p class="Count_text">5</p>
+            </div>
+
+        </div>
+
+
+    </header>
+    <main class=" center brand">
+        <img class="main_img_brand" src="/img/img_main.png" alt="main_img_brand">
+
+        <div class="brand_name">
+            <h1 class="title_1">THE BRAND</h1>
+            <h2 class="title_2">OF LUXERIOUS <span class="fashion">FASHION</span></h2>
+        </div>
+    </main>
+
+    <section class="center catalog">
+        <div class="chapter for_women"><img class="for_women_filter" src="/img/for women.png" alt="chapter_for_women">
+            <article class="for_women_text">
+                <h4 class="for_women_text_30">30% OFF</h4>
+                <h5 class="for_women_text_for">FOR WOMEN</h5>
+            </article>
+        </div>
+        <div class="chapter for_men"><img class="for_men_filter" src="/img/for men.png" alt="chapter_for_men">
+            <article class="for_men_text">
+                <h4 class="for_men_text_hot">HOT DEAL</h4>
+                <h5 class="for_men_text_for">FOR MEN</h5>
+            </article>
+        </div>
+
+        <div class="chapter for_kids"><img class="for_kids_filter" src="/img/for kids.png" alt="chapter_for_kids">
+            <article class="for_kids_text">
+                <h4 class="for_kids_text_new">NEW ARRIVALS</h4>
+                <h5 class="for_kids_text_for">FOR KIDS</h5>
+            </article>
+        </div>
+
+        <div class="chapter accesories">
+            <img class="accesories_filter" src="/img/accesories.png" alt="chapter_accesories">
+            <img class="Categories" src="/img/Categories.png" alt="Categories">
+            <article class="accesories_text">
+                <h4 class="accesories_text_luxirous">LUXIROUS & TRENDY</h4>
+                <h5 class="accesories_text_accesories">ACCESORIES</h5>
+            </article>
+        </div>
+    </section>
+
+    <section class="center text">
+        <h3>Fetured Items</h3>
+        <p>Shop for items based on what we featured in this week</p>
+    </section>
+
+<div class="content_js"></div>
+<template class="template">
+    <div class="center content">
+
+        <div class="item">
+            <img class="foto_ image" src="/img/foto_1.jpg" alt="item_1">
+            <div class="content_text">
+                <div class="Add_to_cart">
+                    <div class="button_hidden"><button class="button_buy"><img src="/img/box_content.png"
+                                alt="box_content">
+                            Add to cart</button></div>
+                </div>
+                <h4 class="content_title name">ELLERY X M'O CAPSULE</h4>
+                <p class="content_text_detail description">Known for her sculptural takes on traditional tailoring,
+                    Australian
+                    arbiter of cool Kym Ellery teams up with Moda Operandi.</p>
+                <h5 class="price">$52.00</h5>
+            </div>
+        </div>
+    </div>
+</template>
+    
+    <footer class="center buttons">
+        <button class="button_browse_all">Browse All Product</button>
+        
+    </footer>
+
+    <script>
+        const data = JSON.parse(dataFeturedItems);
+        console.log(data);
+        const content = document.querySelector('.content_js');
+        const template = document.querySelector('.template');
+
+        document.addEventListener('DOMContentLoaded', function (e) {
+            data.length = 6;
+
+            data.forEach(element => {
+                //дальше создаем шаблон карточки:
+                const product = template.content.querySelector('.content').cloneNode(true);
+
+                const image = product.querySelector('.image');
+                image.src = element.image;
+
+                const name = product.querySelector('.name');
+                name.textContent = element.name;
+
+                const description = product.querySelector('.description');
+                description.textContent = element.description;
+
+                const price = product.querySelector('.price');
+                price.textContent = element.price;
+
+                content.appendChild(product);
+            });
+        });
+
+
+        const buttonEl = document.querySelector('.button_browse_all');
+        buttonEl.addEventListener('click', function (e) {
+
+            const content = document.querySelector('.content_js');
+
+            const template = document.querySelector('.template');
+
+            data.forEach(element => {
+
+                const product = template.content.querySelector('.content').cloneNode(true);
+
+                const image = product.querySelector('.image');
+                image.src = element.image;
+
+                const name = product.querySelector('.name');
+                name.textContent = element.name;
+
+                const description = product.querySelector('.description');
+                description.textContent = element.description;
+
+                const price = product.querySelector('.price');
+                price.textContent = element.price;
+
+                content.appendChild(product);
+            });
+        });
+            </script>
+</body>
+</html>
